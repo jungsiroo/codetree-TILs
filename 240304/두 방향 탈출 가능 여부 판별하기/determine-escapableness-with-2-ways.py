@@ -24,7 +24,7 @@ def dfs(row, col):
         visited[nr][nc] = True
         answer |= dfs(nr, nc)
 
-    return False
+    return answer
 
 
 
