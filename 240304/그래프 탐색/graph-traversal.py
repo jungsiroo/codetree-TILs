@@ -1,27 +1,26 @@
 import sys
 input = sys.stdin.readline
 
-def dfs(now):
+def dfs(now, count):
     global visited
 
     if visited[now]:
-        return 1
-    visited[now] = True
+        return count
 
     answer = 0
     for node in adj[now]:
         visited[node] = True
+        answer += dfs(node, count+1)
 
-        answer += dfs(node)
-    
     return answer
 
 
 if __name__ == "__main__":
     n, m = map(int, input().split())
 
-    global visited
+    global visited, answer
 
+    answer =0 
     adj = [[] for _ in range(n+1)]
     visited = [False]*(n+1)
 
@@ -30,4 +29,4 @@ if __name__ == "__main__":
         adj[x].append(y)
         adj[y].append(x)
 
-    print(dfs(1))
+    print(dfs(1, 0))
