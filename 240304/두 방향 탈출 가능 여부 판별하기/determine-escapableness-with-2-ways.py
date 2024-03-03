@@ -1,8 +1,8 @@
 import sys
 input = sys.stdin.readline
 
-dx = [-1,1,0,0]
-dy = [0,0,-1,1]
+dx = [1,0]
+dy = [0,1]
 
 def in_range(r, c):
     if r<0 or r>=n or c<0 or c>=m:
@@ -15,7 +15,7 @@ def dfs(row, col):
     if row == n-1 and col == m-1:
         return True
 
-    for i in range(4):
+    for i in range(2):
         nr, nc = row+dx[i], col+dy[i]
         if not in_range(nr, nc):
             continue
