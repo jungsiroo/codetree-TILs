@@ -12,9 +12,9 @@ def in_range(r, c):
 def dfs(r, c, val):
     global visited, answer, check, count 
     count += 1
+    answer = max(answer, count)
 
     if count >= 4:
-        answer = max(answer, count)
         check = True
 
     for i in range(4):
