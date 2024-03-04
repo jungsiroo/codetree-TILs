@@ -45,7 +45,7 @@ if __name__ == "__main__":
 
     MAX = max(sum(board, [])) 
 
-    for k in range(MAX+1):
+    for k in range(1, MAX+1):
         grid = change(k)
         visited = [[False]*m for _ in range(n)]
         area = 0
