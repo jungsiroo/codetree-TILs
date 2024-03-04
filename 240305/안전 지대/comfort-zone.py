@@ -1,5 +1,4 @@
 import sys
-sys.setrecursionlimit(10**6)
 from heapq import heappop, heappush
 input = sys.stdin.readline
 
@@ -21,17 +20,17 @@ def in_range(r, c):
         return False
     return True
 
-def dfs(r, c, grid):
+def dfs(r, c, k):
     global visited
 
     for i in range(4):
         nr, nc = r+dx[i], c+dy[i]
         if not in_range(nr, nc):
             continue
-        if visited[nr][nc] or grid[nr][nc] == 0:
+        if visited[nr][nc] or board[nr][nc] <= k:
             continue
         visited[nr][nc] = True
-        dfs(nr, nc, grid)
+        dfs(nr, nc, k)
 
 
 if __name__ == "__main__":
@@ -47,15 +46,14 @@ if __name__ == "__main__":
     MAX = max(sum(board, [])) 
 
     for k in range(1, MAX+1):
-        grid = change(k)
         visited = [[False]*m for _ in range(n)]
         area = 0
 
         for i in range(n):
             for j in range(m):
-                if grid[i][j] > 0 and not visited[i][j]:
+                if board[i][j] > k and not visited[i][j]:
                     visited[i][j] = True
-                    dfs(i, j, grid)
+                    dfs(i, j, k)
                     area += 1
 
         heappush(answer, [-area, k])             
