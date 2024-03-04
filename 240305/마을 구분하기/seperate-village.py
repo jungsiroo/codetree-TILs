@@ -17,26 +17,21 @@ def can_go(nr, nc):
     
     return True
 
-def dfs(r, c, count):
-    global visited, answer
+def dfs(r, c):
+    global visited, answer, count
 
-    check = 0
     for i in range(4):
         nr, nc = r+dx[i], c+dy[i]
         if not can_go(nr, nc):
-            check += 1
             continue
             
         visited[nr][nc] = True
-        dfs(nr, nc, count+1)
+        count += 1
+        dfs(nr, nc)
     
-    if check == 4:
-        answer.append(count)
-
-
 if __name__ == "__main__":
     n = int(input())
-    global visited, answer
+    global visited, answer, count
 
     answer = []
     visited = [[False]*n for _ in range(n)]
@@ -54,8 +49,10 @@ if __name__ == "__main__":
     for r, c in place:
         if visited[r][c]:
             continue
+        count = 1
         visited[r][c] = True
-        dfs(r,c,1)
+        dfs(r,c)
+        answer.append(count)
 
     answer.sort()
     print(len(answer))
