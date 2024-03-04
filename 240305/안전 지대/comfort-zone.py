@@ -60,4 +60,4 @@ if __name__ == "__main__":
         heappush(answer, [-area, k])             
     
     ans, k = heappop(answer)
-    print(-ans, k)
+    print(k, -ans)
