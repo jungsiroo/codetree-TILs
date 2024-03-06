@@ -3,17 +3,15 @@ input = sys.stdin.readline
 
 if __name__ == "__main__":
     n = int(input())
-    nums = list(map(int, input().split()))
+    nums = [0]+list(map(int, input().split()))
 
     answer = 0
+    sum_num = 0
 
-    for i in range(n):
-        answer += nums[i]
+    for i in range(1, n+1):
+        if sum_num < 0:
+            sum_num = nums[i]
+        else:
+            sum_num += nums[i]
 
-        if answer < 0:
-            if i<n-1:
-                answer = 0
-            else:
-                answer = nums[i]
-
-    print(answer)
+    print(sum_num)
