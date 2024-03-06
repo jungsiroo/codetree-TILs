@@ -10,7 +10,7 @@ if __name__ == "__main__":
     for i in range(n):
         answer += nums[i]
 
-        if answer < 0:
+        if answer < 0 and i<n-1:
             answer = 0
-    
+
     print(answer)
