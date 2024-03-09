@@ -8,10 +8,12 @@ input = sys.stdin.readline
 def solution(n):
     answer = 0
 
-    while n%5 != 0:
+    while n%5 != 0 and n>0:
         n -= 2
         answer += 1
 
+    if n < 0:
+        return -1
     five, rest = divmod(n, 5)
     answer += five
 
