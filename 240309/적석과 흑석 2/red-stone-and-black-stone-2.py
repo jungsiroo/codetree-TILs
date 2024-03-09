@@ -16,23 +16,23 @@ if __name__ == "__main__":
         a, b = map(int, input().split())
         black.append([a, b])
     
-    black.sort(key=lambda x:(x[0], abs(x[0]-x[1])))
+    black.sort(key=lambda x:(x[1], x[0]))
 
     answer = 0
-    r_idx, b_idx= 0, 0
+    r_idx, b_idx = c-1, n-1
 
-    while r_idx<c and b_idx<n:
+    while r_idx>=0 and b_idx>=0:
         t = red[r_idx]
         a, b = black[b_idx]
 
         if a<=t<=b:
             answer += 1
-            r_idx += 1
-            b_idx += 1
+            b_idx -= 1
+            r_idx -= 1
         else:
             if t<a:
-                r_idx += 1
+                b_idx -= 1
             elif t>b:
-                b_idx += 1
-
+                r_idx -= 1
+        
     print(answer)
