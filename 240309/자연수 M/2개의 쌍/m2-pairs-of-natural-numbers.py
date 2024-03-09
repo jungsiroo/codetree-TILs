@@ -18,16 +18,20 @@ if __name__ == "__main__":
 
     answer = 0
 
-    for _ in range(m//2):
+    while start <= end:
         k1, k2 = keys[start], keys[end]
         answer = max(answer, (k1+k2))
 
-        nums[k1] -= 1
-        nums[k2] -= 1
-
-        if nums[k1] == 0:
+        if nums[k1] == nums[k2]:
             start += 1
-        if nums[k2] == 0:
             end -= 1
+        
+        elif nums[k1] < nums[k2]:
+            start += 1
+            nums[k2] -= nums[k1]
+        
+        else:
+            end -= 1
+            nums[k1] -= nums[k2]
         
     print(answer)
