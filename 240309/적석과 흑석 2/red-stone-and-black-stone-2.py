@@ -29,10 +29,9 @@ if __name__ == "__main__":
             answer += 1
             b_idx -= 1
             r_idx -= 1
-        else:
-            if t<a:
-                b_idx -= 1
-            elif t>b:
-                r_idx -= 1
+        elif t<a:
+            b_idx -= 1
+        elif t>b:
+            r_idx -= 1
         
     print(answer)
