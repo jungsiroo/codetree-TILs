@@ -15,6 +15,7 @@ if __name__ == "__main__":
     for score, limit in bombs:
         if now<limit:
             answer += score
-        now += 1
+            now += 1
+
 
     print(answer)
