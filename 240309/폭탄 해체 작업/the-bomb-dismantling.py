@@ -1,5 +1,14 @@
 import sys
+from heapq import heappop, heappush
 input = sys.stdin.readline
+
+def get_score(idx):
+    _, ret = bombs[idx]
+    return ret
+
+def get_limit_time(idx):
+    ret, _ = bombs[idx]
+    return ret
 
 if __name__ == "__main__": 
     n = int(input())
@@ -7,15 +16,21 @@ if __name__ == "__main__":
 
     for _ in range(n):
         score, limit = map(int, input().split())
-        bombs.append([score, limit])
+        bombs.append([limit, score])
     
-    bombs.sort(key=lambda x:(x[1], -x[0]))
+    bombs.sort()
 
-    now, answer = 0,  0
-    for score, limit in bombs:
-        if now<limit:
-            answer += score
-            now += 1
+    index = n-1
+    MAX_T = 10000
+    answer = 0
+    pq = []
 
+    for t in range(MAX_T, 0, -1):
+        while index>=0 and get_limit_time(index)>=t:
+            heappush(pq, -get_score(index))
+            index -= 1
+
+        if pq:
+            answer -= heappop(pq)
 
     print(answer)
