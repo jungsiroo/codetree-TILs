@@ -24,13 +24,14 @@ if __name__ == "__main__":
         if A_cards[index] > b_card:
             answer += 1
         else:
-            for i in range(index+1, n):
-                index = i
-                if A_cards[index] > b_card:
-                    answer += 1
+            while A_cards[index]<=b_card:
+                if index == n-1:
                     break
+                index += 1
+
+            if A_cards[index] > b_card:
+                answer += 1
+        index += 1
             
-            if index == n-1:
-                break
-    
+
     print(answer)
