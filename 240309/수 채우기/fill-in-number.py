@@ -8,7 +8,7 @@ input = sys.stdin.readline
 def solution(n):
     answer = 0
 
-    if n%2 != 0 and n%5 != 0:
+    while n%5 != 0:
         n -= 2
         answer += 1
 
