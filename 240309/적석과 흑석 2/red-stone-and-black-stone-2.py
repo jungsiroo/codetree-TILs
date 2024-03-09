@@ -21,7 +21,7 @@ if __name__ == "__main__":
     answer = 0
     r_idx, b_idx= 0, 0
 
-    while b_idx<n:
+    while r_idx<c and b_idx<n:
         t = red[r_idx]
         a, b = black[b_idx]
 
