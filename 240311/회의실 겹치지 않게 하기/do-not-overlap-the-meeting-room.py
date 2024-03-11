@@ -3,22 +3,24 @@ input = sys.stdin.readline
 
 if __name__ == "__main__":
     n = int(input())
+    meetings = []
 
-    queue = []
     for _ in range(n):
-        start, end = map(int, input().split())
-        queue.append([start, 1])
-        queue.append([end, -1])
+        meetings.append(list(map(int, input().split())))
+    meetings.sort()
 
-    queue.sort()
+    dp = [[0, 0, 1] for _ in range(n)] # start, end, value
+    dp[0] = [*meetings[0], 1]
 
-    cnt = 0
-    ans = 0
+    for i, (start, end) in enumerate(meetings[1:],1):
+        if start>=dp[i-1][1]:
+            dp[i] = [start, end, dp[i-1][2]+1]
+        else:
+            index = 0
+            for j in range(i, -1, -1):
+                if dp[j][1]<=start:
+                    index =  j
 
-    for x, v in queue:
-        cnt += v
+            dp[i] = [start, end, dp[index][2]+1]
 
-        if v == 1:
-            ans = max(ans, cnt)
-    
-    print(ans)
+    print(n-dp[n-1][2])
