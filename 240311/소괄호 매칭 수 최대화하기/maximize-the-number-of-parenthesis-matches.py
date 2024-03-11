@@ -7,8 +7,9 @@ def calculate_score(bracket):
     dp[0] = int(bracket[0] == ")")
 
     for i in range(1, len(bracket)):
+        dp[i] = dp[i-1]
         if bracket[i] == ")":
-            dp[i] = dp[i-1] + 1
+            dp[i] += 1
     
     answer = 0
 
