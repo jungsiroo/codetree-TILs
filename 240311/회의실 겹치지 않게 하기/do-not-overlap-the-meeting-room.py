@@ -20,6 +20,7 @@ if __name__ == "__main__":
             for j in range(i, -1, -1):
                 if dp[j][1]<=start:
                     index =  j
+                    break
 
             dp[i] = [start, end, dp[index][2]+1]
 
