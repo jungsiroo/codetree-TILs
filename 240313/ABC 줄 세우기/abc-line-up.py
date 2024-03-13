@@ -8,26 +8,12 @@ if __name__ == "__main__":
     n = int(input())
     arr = input().split()
 
-
-    alphabet = list(UPPER)
     answer = 0
-    index = set()
+
     for i in range(n):
-        if order[arr[i]] != i:
-            index.add(i)
-    
-    while index:
-        idx = next(iter(index))
-        s = arr[idx]
-        arr[idx], arr[order[s]] = arr[order[s]], arr[idx]
-
-
-        if arr[idx] == alphabet[idx]:
-            index.remove(idx)
-        if arr[order[s]] == alphabet[order[s]]:
-            index.remove(order[s])
-
-        answer += 1 
-        # print(arr)
+        for j in range(i+1, n):
+            if arr[i]>arr[j]:
+                arr[i], arr[j] = arr[j], arr[i]
+                answer += 1
 
     print(answer)
