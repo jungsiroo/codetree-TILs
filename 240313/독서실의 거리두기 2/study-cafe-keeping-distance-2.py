@@ -14,8 +14,10 @@ if __name__ == "__main__":
     if len(used) == 1:
         if (n-1)-used[0] >= used[0]:
             seats[n-1] = 1
+            used.append(n-1)
         else:
             seats[0] = 1
+            used.append(0)
     else:
         prev = used[0]
         gap, start, end = [0]*3
