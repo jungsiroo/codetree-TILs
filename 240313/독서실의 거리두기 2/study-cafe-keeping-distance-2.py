@@ -34,22 +34,20 @@ if __name__ == "__main__":
         max_choice = max(left, mid, right)
         if max_choice == left:
             seats[0] = 1
+            used.append(0)
         elif max_choice == mid:
-            seats[mid] = 1
+            seats[(start+end)//2] = 1
+            used.append((start+end)//2)
         else:
             seats[-1] = 1
+            used.append(n-1)
+        
+    used.sort()
 
-    # print(seats)
-    answer = int(1e9)
-    prev = 0
-    start = 0
+    prev, answer = used[0], int(1e9)
 
-    if seats[0] == 1:
-        start = 1
-
-    for i in range(start, n):
-        if seats[i] == 1:
-            answer = min(i-prev, answer)
-            prev = i
+    for now in used[1:]:
+        answer = min(answer, now-prev)
+        prev = now
     
     print(answer)
