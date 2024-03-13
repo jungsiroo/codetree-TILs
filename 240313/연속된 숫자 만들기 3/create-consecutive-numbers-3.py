@@ -1,28 +1,29 @@
 import sys
-input = sys.stdin.readline
 
-if __name__ == "__main__":
-    line = list(map(int, input().split()))
-    line.sort()
+# 변수 선언 및 입력
+a = list(map(int, input().split()))
 
-    choice = -1
-    r_dist, l_dist = line[1] - line[0], line[2]-line[1]
+a.sort()
 
-    if r_dist <= l_dist:
-        choice = 0
-    else:
-        choice = 2
+# Case 1. 3개의 숫자가 전부 연속한 경우
+# 이 경우에는 이동할 필요가 없으므로
+# 최대 이동 횟수는 0이 됩니다.
+if a[0] + 1 == a[1] and a[1] + 1 == a[2]:
+    print(0)
+    sys.exit()
 
-    answer = 0 
+max_move = 0
+# 그렇지 않은 경우 왼쪽 끝 사람이 이동하는 경우와
+# 오른쪽 끝 사람이 이동하는 경우로 나뉘게 됩니다.
+# 각각 거리를 한칸씩 좁혀가면서 이동하는 방식이 최대 이동횟수를 만들기 때문에
+# Case 2. 왼쪽 끝 사람이 가장 먼저 이동하는 경우
+# 최대 이동 횟수는 (오른쪽 끝 사람과 가운데 사람의 거리) - 1 회가 됩니다.
+move = a[2] - a[1] - 1
+max_move = max(max_move, move)
 
-    while r_dist != 1 or l_dist != 1:
-        move = 1 if choice == 0 else -1
-        nxt = line[1] + move
+# Case 3. 오른쪽 끝 사람이 가장 먼저 이동하는 경우
+# 최대 이동 횟수는 (왼쪽 끝 사람과 가운데 사람의 거리) - 1 회가 됩니다.
+move = a[1] - a[0] - 1
+max_move = max(max_move, move)
 
-        line[choice] = line[1]
-        line[1] = nxt
-
-        r_dist, l_dist = line[1] - line[0], line[2]-line[1]
-
-        answer += 1
-    print(answer)
+print(max_move)
