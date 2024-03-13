@@ -24,7 +24,7 @@ if __name__ == "__main__":
         direction = 2 if choice == 0 else -2  
         mid = arr[1] + direction
         if mid == arr[2-choice]:
-            mid -= 1
+            mid -= 1 if choice == 0 else -1
         arr[choice] = arr[1]
         arr[1] = mid
 
