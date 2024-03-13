@@ -26,16 +26,19 @@ if __name__ == "__main__":
                 start = prev
                 end = now
             prev = now
-        
-        if end-start >= n-1-used[-1]:
-            target = (start+end) // 2
-        elif used[0] >= end-start:
-            target = 0
-        elif n-1-used[-1] > end-start:
-            target = n-1
-        seats[target] = 1
 
-    # print(seats)
+        left = used[0]    
+        right = n-1-used[-1]
+        mid = (start+end)//2
+
+        max_choice = max(left, mid, right)
+        if max_choice == left:
+            seats[0] = 1
+        elif max_choice == mid:
+            seats[mid] = 1
+        else:
+            seats[-1] = 1
+
     answer = int(1e9)
     prev = 0
     start = 0
