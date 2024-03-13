@@ -3,10 +3,14 @@ input = sys.stdin.readline
 
 def solution():
     if L[0] == B[0]:
-        return abs(B[1]-L[1])-1+int(R[0] == L[0])*2
+        min_w = min(L[1], B[1])
+        max_w = max(L[1], B[1])
+        return abs(B[1]-L[1])-1+int(R[0] == L[0] and min_w<R[1]<max_w)*2
 
     if L[1] == B[1]:
-        return abs(B[0]-L[0])-1+int(R[1] == L[1])*2
+        min_h = min(L[0], B[0])
+        max_h = max(L[0], B[0])
+        return abs(B[0]-L[0])-1+int(R[1] == L[1] and min_w<R[0]<max_w)*2
 
     return abs(B[0]-L[0])+abs(B[1]-L[1])-1
 
