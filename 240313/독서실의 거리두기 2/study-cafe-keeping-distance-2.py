@@ -27,14 +27,15 @@ if __name__ == "__main__":
                 end = now
             prev = now
         
-        if end-start <= n-1-used[-1]:
+        if end-start >= n-1-used[-1]:
             target = (start+end) // 2
         elif used[0] >= end-start:
             target = 0
-        else:
+        elif n-1-used[-1] > end-start:
             target = n-1
         seats[target] = 1
 
+    # print(seats)
     answer = int(1e9)
     prev = 0
     start = 0
