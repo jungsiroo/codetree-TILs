@@ -29,6 +29,6 @@ if __name__ == "__main__":
 
         if trans != status:
             answer += 1
-        status = trans
+        status = trans[:]
     
     print(answer)
