@@ -29,7 +29,7 @@ if __name__ == "__main__":
 
         left = used[0]    
         right = n-1-used[-1]
-        mid = (start+end)//2
+        mid = end-(start+end)//2
 
         max_choice = max(left, mid, right)
         if max_choice == left:
@@ -39,6 +39,7 @@ if __name__ == "__main__":
         else:
             seats[-1] = 1
 
+    # print(seats)
     answer = int(1e9)
     prev = 0
     start = 0
