@@ -10,7 +10,7 @@ def solution():
     if L[1] == B[1]:
         min_h = min(L[0], B[0])
         max_h = max(L[0], B[0])
-        return abs(B[0]-L[0])-1+int(R[1] == L[1] and min_w<R[0]<max_w)*2
+        return abs(B[0]-L[0])-1+int(R[1] == L[1] and min_h<R[0]<max_h)*2
 
     return abs(B[0]-L[0])+abs(B[1]-L[1])-1
 
