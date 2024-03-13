@@ -18,14 +18,11 @@ if __name__ == "__main__":
     mid = (start+end) // 2
     seats[mid] = 1
 
-    prev, gap = 0, int(1e9)
-    answer = 0
-
+    prev, answer = 0, int(1e9)
     for i in range(1, n):
         if seats[i] == 1:
-            if i-prev < gap:
-                gap = i-prev
-                answer = max(answer, gap)
+            if i-prev < answer:
+                answer = i-prev
             prev = i
     
     print(answer)
