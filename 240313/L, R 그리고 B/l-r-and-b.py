@@ -3,10 +3,10 @@ input = sys.stdin.readline
 
 def solution():
     if L[0] == B[0]:
-        return abs(B[1]-L[1]-1)+int(R[0] == L[0])*2
+        return abs(B[1]-L[1])-1+int(R[0] == L[0])*2
 
     if L[1] == B[1]:
-        return abs(B[0]-L[0]-1)+int(R[1] == L[1])*2
+        return abs(B[0]-L[0])-1+int(R[1] == L[1])*2
 
     return abs(B[0]-L[0])+abs(B[1]-L[1])-1
 
