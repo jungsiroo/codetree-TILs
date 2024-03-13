@@ -22,5 +22,7 @@ if __name__ == "__main__":
     for i in range(n):
         if nums[i] > smallest:
             key = nums[i]
+            break
+    
 
     print(solution(key))
