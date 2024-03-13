@@ -27,8 +27,11 @@ if __name__ == "__main__":
                 end = now
             prev = now
         
-        mid = (start+end) // 2
-        seats[mid] = 1
+        if end-start>= n-1-used[-1]:
+            target = (start+end) // 2
+        else:
+            target = (used[-1] + n-1) // 2
+        seats[target] = 1
 
     answer = int(1e9)
     prev = 0
