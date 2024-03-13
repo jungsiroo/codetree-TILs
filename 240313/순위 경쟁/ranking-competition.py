@@ -6,11 +6,11 @@ def get_idx(c):
 
 def transform(scores):
     ret = [0]*3
+    max_val = max(scores)
     
     for i in range(3):
-        if scores[i] == 0:
-            continue
-        ret[i] = scores[i] // abs(scores[i])
+        if scores[i] == max_val:
+            ret[i] = 1
 
     return ret
 
