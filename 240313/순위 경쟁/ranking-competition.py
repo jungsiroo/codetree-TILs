@@ -17,7 +17,7 @@ def transform(scores):
 if __name__ == "__main__":
     n = int(input())
     scores = [0, 0, 0]
-    status = [0, 0, 0]
+    status = [1]*3
     answer= 0
 
     for _ in range(n):
@@ -26,7 +26,7 @@ if __name__ == "__main__":
 
         scores[get_idx(c)] += s
         trans = transform(scores)
-
+        
         if trans != status:
             answer += 1
         status = trans[:]
