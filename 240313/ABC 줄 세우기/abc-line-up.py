@@ -8,39 +8,26 @@ if __name__ == "__main__":
     n = int(input())
     arr = input().split()
 
+
+    alphabet = list(UPPER)
     answer = 0
-
-    # for i in range(n):
-    #     s = arr[i]
-    #     if order[s] != i:
-    #         arr[i], arr[order[s]] = arr[order[s]], arr[i]
-    #         answer += 1
-
-    check = [0]*n
     index = set()
     for i in range(n):
-        if order[arr[i]] == i:
-            check[i] =1 
-        else:
+        if order[arr[i]] != i:
             index.add(i)
     
-    sum_check = sum(check)
-    alphabet = list(UPPER)
-    
-    while sum_check != n:
+    while index:
         idx = next(iter(index))
         s = arr[idx]
         arr[idx], arr[order[s]] = arr[order[s]], arr[idx]
 
 
         if arr[idx] == alphabet[idx]:
-            sum_check += 1
             index.remove(idx)
         if arr[order[s]] == alphabet[order[s]]:
-            sum_check += 1
             index.remove(order[s])
 
         answer += 1 
+        # print(arr)
 
-    
     print(answer)
