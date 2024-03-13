@@ -5,7 +5,7 @@ input = sys.stdin.readline
 def solution(key):
     if key == -1 or key not in order or len(order[key])>1:
         return -1
-    return order[key]
+    return order[key][0]
 
 if __name__ == "__main__":
     n = int(input())
