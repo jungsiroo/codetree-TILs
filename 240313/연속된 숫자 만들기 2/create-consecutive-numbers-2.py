@@ -20,12 +20,15 @@ if __name__ == "__main__":
                 choice = 0
             else:
                 choice = 2
-        
-        mid = (arr[1]+arr[2-choice]) // 2
+
+        direction = 2 if choice == 0 else -2  
+        mid = arr[1] + direction
+        if mid == arr[2-choice]:
+            mid -= 1
         arr[choice] = arr[1]
         arr[1] = mid
 
         l_dist, r_dist = arr[1]-arr[0], arr[2]-arr[1]
         answer += 1
-    
+
     print(answer)
