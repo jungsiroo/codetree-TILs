@@ -26,12 +26,12 @@ if __name__ == "__main__":
             cd_pair[(c_value + d_value)] = cd_pair.get(c_value+d_value, 0)+1
 
     answer = 0
+
     for ab_val in ab_pair.keys():
         ab_pair[ab_val] -= 1
 
         for cd_val, cd_cnt in cd_pair.items():
             if ab_val + cd_val == 0:
-                add_up = min(ab_pair[ab_val], cd_cnt)
-                answer += add_up
-                cd_pair[cd_val] -= add_up
+                answer += cd_cnt
+                cd_pair[cd_val] -= cd_cnt
     print(answer)
