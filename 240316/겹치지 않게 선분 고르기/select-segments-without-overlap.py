@@ -16,6 +16,6 @@ if __name__ == "__main__":
     for start, end in lines:
         if start > prev:
             answer += 1
-            prev = start
+            prev = end
 
     print(answer)
