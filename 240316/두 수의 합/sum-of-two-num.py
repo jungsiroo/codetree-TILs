@@ -15,6 +15,10 @@ if __name__ == "__main__":
     for num in nums:
         target = k- num
         answer += hash_map.get(target, 0)
+        if target == num:
+            answer -= 1
+
+
         hash_map[num] = max(hash_map.get(num,0) -1, 0)
 
 
