@@ -27,11 +27,9 @@ if __name__ == "__main__":
 
     answer = 0
 
-    for ab_val in ab_pair.keys():
-        ab_pair[ab_val] -= 1
-
+    for ab_val, ab_cnt in ab_pair.items():
         for cd_val, cd_cnt in cd_pair.items():
             if ab_val + cd_val == 0:
-                answer += cd_cnt
+                answer += ab_cnt*cd_cnt
                 cd_pair[cd_val] -= cd_cnt
     print(answer)
