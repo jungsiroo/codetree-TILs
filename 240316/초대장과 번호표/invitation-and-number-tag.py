@@ -11,7 +11,7 @@ if __name__ == "__main__":
         total, people = inp[0], set(inp[1:])
 
         if total - len(visited.intersection(people)) == 1:
-            visited = visited.union(people)
+            visited.update(people)
             # print(visited)
 
     print(len(visited))
