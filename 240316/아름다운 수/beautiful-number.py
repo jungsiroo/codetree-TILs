@@ -1,35 +1,30 @@
 import sys
 input= sys.stdin.readline
 
-def get_continuous_cnt(now):
+def check_continuous(now):
     prev = 0
     cnt = dict()
 
     for num in now:
         if num != prev:
-            if prev != 0:
-                cnt[prev] = cnt.get(prev,0)%prev
+            if prev != 0 and cnt[prev] % prev != 0:
+                return False
+
             cnt[num] = 1
         else:
             cnt[num] += 1
         prev = num
+    
+    for k, v in cnt.items():
+        if v%k != 0:
+            return False
 
-    return cnt
+    return True
 
 def beautiful(now, cnt):
     global answer
     if cnt == n:
-        check = get_continuous_cnt(now)
-        flag = True
-
-        for key, value in check.items():
-            if key == 0:
-                continue
-            if value%key != 0:
-                flag = False
-                break
-        
-        if flag:
+        if check_continuous(now):
             answer += 1
 
         return
