@@ -28,4 +28,4 @@ if __name__ == "__main__":
 
     dfs(n, m)
 
-    print(dp[tuple([n,m])])
+    print(dp[tuple([n,m])] % MOD)
