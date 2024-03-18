@@ -9,6 +9,9 @@ def dfs(left, right):
     if left == right or left == 1 or right == 0:
         return 1
     
+    if right == 1:
+        return left
+    
     if tuple([left, right]) in dp:
         return dp[tuple([left, right])]
     
