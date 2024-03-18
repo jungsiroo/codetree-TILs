@@ -7,9 +7,11 @@ def dfs(left, right):
     global dp
 
     if left == right or left == 1 or right == 0:
+        dp[tuple([left, right])] = 1
         return 1
     
     if right == 1:
+        dp[tuple([left, right])] = left
         return left
     
     if tuple([left, right]) in dp:
